@@ -77,7 +77,8 @@ namespace _4_feladat
 
             for (int i = 0; i < headers.Length; i++)
             {
-                xlSheet.Cells[1, 1] = headers[0];
+                xlSheet.Cells[1, i+1] = headers[i];
+             
 
 
             }
@@ -95,7 +96,7 @@ namespace _4_feladat
                 values[counter, 5] = f.NumberOfRooms;
                 values[counter, 6] = f.FloorArea;
                 values[counter, 7] = f.Price;
-                values[counter, 8] = f.Price / f.FloorArea;
+                values[counter, 8] = f.FloorArea * f.Price;
                 counter++;
             }
 
@@ -111,6 +112,26 @@ namespace _4_feladat
             headerRange.RowHeight = 40;
             headerRange.Interior.Color = Color.LightBlue;
             headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            int lastrowID = xlSheet.UsedRange.Rows.Count;
+
+            Excel.Range Sarga = xlSheet.get_Range(GetCell(2, 1), GetCell(lastrowID, 1));
+            Sarga.Interior.Color = Color.LightYellow;
+            Sarga.Font.Bold = true;
+
+            Excel.Range Zold = xlSheet.get_Range(GetCell(2, headers.Length), GetCell(lastrowID, headers.Length));
+            Zold.Interior.Color = Color.LightGreen;
+            Zold.Cells.NumberFormat = "#####0.00";
+
+            Excel.Range Keret = xlSheet.get_Range(GetCell(1, 1), GetCell(lastrowID, headers.Length));
+            Keret.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+
+
+
+
+
+
 
 
         }
