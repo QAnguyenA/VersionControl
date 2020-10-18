@@ -8,19 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using _6_feladat.Entities;
 using _6_feladat.MnbServiceReference;
 
 namespace _6_feladat
 {
     public partial class Form1 : Form
     {
+
+        List<RateData> Rates;
         public Form1()
         {
             InitializeComponent();
-            hivas();
+            Hivas();
+
+            dataGridView1.DataSource = Rates;
         }
 
-        private void hivas()
+        private void Hivas()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
