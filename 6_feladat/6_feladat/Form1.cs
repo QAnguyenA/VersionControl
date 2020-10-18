@@ -19,13 +19,17 @@ namespace _6_feladat
     {
 
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
-            Chart();
+            Getcurrencies();
             RefreshData();
+            Chart();
+            
 
             dataGridView1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
 
 
 
@@ -69,7 +73,10 @@ namespace _6_feladat
                 rate.Date = DateTime.Parse(element.GetAttribute("date"));
 
                 var childElement = (XmlElement)element.ChildNodes[0];
+                if (childElement == null)
+                    continue;
                 rate.Currency = childElement.GetAttribute("curr");
+              
 
                 var unit = decimal.Parse(childElement.GetAttribute("unit"));
                 var value = decimal.Parse(childElement.InnerText);
@@ -82,6 +89,7 @@ namespace _6_feladat
 
         private void Chart()
         {
+            
             chartRateData.DataSource = Rates;
 
             var series = chartRateData.Series[0];
@@ -114,6 +122,35 @@ namespace _6_feladat
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             RefreshData();
+        }
+
+        private void Getcurrencies()
+        {
+            var mnbService2 = new MNBArfolyamServiceSoapClient();
+
+            var request2 = new GetCurrenciesRequestBody()
+            {
+                
+            };
+
+            var response2 = mnbService2.GetCurrencies(request2);
+
+            var result = response2.GetCurrenciesResult;
+
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                Currencies.Add(result);
+               
+
+
+            }
+        
+
+
+            
         }
     }
 

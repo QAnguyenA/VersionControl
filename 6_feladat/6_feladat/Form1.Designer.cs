@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.chartRateData = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -50,23 +50,23 @@
             // 
             // chartRateData
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartRateData.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartRateData.Legends.Add(legend5);
+            chartArea8.Name = "ChartArea1";
+            this.chartRateData.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartRateData.Legends.Add(legend8);
             this.chartRateData.Location = new System.Drawing.Point(381, 63);
             this.chartRateData.Name = "chartRateData";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartRateData.Series.Add(series5);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chartRateData.Series.Add(series8);
             this.chartRateData.Size = new System.Drawing.Size(557, 350);
             this.chartRateData.TabIndex = 1;
             this.chartRateData.Text = "chart1";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy MM dd";
+            this.dateTimePicker1.CustomFormat = "yyyy/mm/dd";
             this.dateTimePicker1.Location = new System.Drawing.Point(13, 13);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
@@ -118,9 +118,9 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRateData;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.DateTimePicker dateTimePicker1;
+        public System.Windows.Forms.DateTimePicker dateTimePicker2;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
