@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using _6_feladat.Entities;
 using _6_feladat.MnbServiceReference;
 
@@ -16,11 +17,12 @@ namespace _6_feladat
     public partial class Form1 : Form
     {
 
-        List<RateData> Rates;
+        BindingList<RateData> Rates = new BindingList<RateData>();
         public Form1()
         {
             InitializeComponent();
             Hivas();
+            
 
             dataGridView1.DataSource = Rates;
         }
@@ -40,7 +42,7 @@ namespace _6_feladat
 
             var result = response.GetExchangeRatesResult;
 
-            SaveFileDialog sfd = new SaveFileDialog();
+            /*SaveFileDialog sfd = new SaveFileDialog();
             if (sfd.ShowDialog() != DialogResult.OK) return;
             using (StreamWriter sw= new StreamWriter(sfd.FileName,false, Encoding.UTF8))
             {
@@ -49,7 +51,32 @@ namespace _6_feladat
                     sw.Write(a);
                 }
             }
+            */
 
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                {
+                    rate.Value = value / unit;
+                }
+            }
         }
+
     }
+
+        
+    
 }
