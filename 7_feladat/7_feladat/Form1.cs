@@ -18,7 +18,7 @@ namespace _7_feladat
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
-        Random rng = new Random(1246);
+        Random rng = new Random(1234);
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +29,28 @@ namespace _7_feladat
 
             //dataGridView1.DataSource = Population;
 
+
+
+            for (int year = 2005; year <= 2024; year++)
+            {
+
+                for (int i = 0; i < Population.Count; i++)
+                {
+
+                }
+
+                int nbrOfMales = (from x in Population
+                                  where x.Gender == Gender.Male && x.IsAlive
+                                  select x).Count();
+                int nbrOfFemales = (from x in Population
+                                    where x.Gender == Gender.Female && x.IsAlive
+                                    select x).Count();
+                Console.WriteLine(
+                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+            }
+
         }
+
 
         public List<Person> GetPopulation(string csvpath)
         {
