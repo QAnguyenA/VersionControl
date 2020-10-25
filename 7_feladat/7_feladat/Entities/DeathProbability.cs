@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace _7_feladat.Entities
 {
-    class DeathProbability
+    public class DeathProbability
     {
         public Gender Gender { get; set; }
         public int Age { get; set; }
-        public double DDrobability { get; set; }
+        public double Probability { get; set; }
     }
 }
