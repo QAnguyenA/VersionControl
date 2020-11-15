@@ -51,6 +51,7 @@
     <Compile Include="Abractions\Toy.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Entities\CarFactory2.cs" />
     <Compile Include="Entities\Toy.cs">
       <SubType>Component</SubType>
     </Compile>
