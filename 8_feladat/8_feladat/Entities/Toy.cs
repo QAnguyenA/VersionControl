@@ -9,7 +9,7 @@ using _8_feladat.Abractions;
 
 namespace _8_feladat.Entities
 {
-    public class Ball: Toy
+    public class Toy: Abractions.Toy
     {
         protected override void DrawImage(Graphics g)
         {
