@@ -13,9 +13,9 @@ namespace _8_feladat
 {
     public partial class Form1 : Form
     {
-        private List<Toy> _toys = new List<Toy>();
+        private List<Abractions.Toy> _toys = new List<Abractions.Toy>();
 
-        private Toy _nextToy;
+        private Abractions.Toy _nextToy;
 
         private Abractions.IToyFactory _factory;
 
@@ -38,7 +38,7 @@ namespace _8_feladat
         private void createTimer_Tick(object sender, EventArgs e)
         {
             var toy = Factory.CreateNew();
-            _toys.Add((Toy)toy);
+            _toys.Add(toy);
             toy.Left = -toy.Width;
             mainPanel.Controls.Add(toy);
 
@@ -70,14 +70,17 @@ namespace _8_feladat
 
         private void btnSelectBall_Click(object sender, EventArgs e)
         {
-            Factory = new IToyFactory();
+            Factory = new IToyFactory
+            {
+                BallColor = btnColor.BackColor
+            };
         }
 
         private void DisplayNext()
         {
             if (_nextToy != null)
                 Controls.Remove(_nextToy);
-            _nextToy = (Toy)Factory.CreateNew();
+            _nextToy = Factory.CreateNew();
             _nextToy.Top = label1.Top + label1.Height + 20;
             _nextToy.Left = label1.Left;
             Controls.Add(_nextToy);

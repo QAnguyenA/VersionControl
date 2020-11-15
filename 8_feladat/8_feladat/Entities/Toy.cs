@@ -11,6 +11,14 @@ namespace _8_feladat.Entities
 {
     public class Toy: Abractions.Toy
     {
+        public SolidBrush BallColor { get; private set; }
+
+        public Toy(Color color)
+        {
+            BallColor = new SolidBrush(color);
+        }
+
+
         protected override void DrawImage(Graphics g)
         {
             g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
