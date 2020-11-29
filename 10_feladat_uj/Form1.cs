@@ -20,6 +20,8 @@ namespace _10_feladat_uj
             InitializeComponent();
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
+            //gc.AddPlayer();
+            //gc.Start(true);
         }
     }
 }
