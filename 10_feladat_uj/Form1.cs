@@ -20,6 +20,7 @@ namespace _10_feladat_uj
         int nbrOfSteps = 10;
         int nbrOfStepsIncrement = 10;
         int generation = 1;
+        Brain winnerBrain = null;
 
 
         public Form1()
@@ -30,6 +31,8 @@ namespace _10_feladat_uj
             this.Controls.Add(ga);
             //gc.AddPlayer();
             //gc.Start(true);
+
+            
 
             gc.GameOver += Gc_GameOver;
 
@@ -54,6 +57,15 @@ namespace _10_feladat_uj
                              orderby p.GetFitness() descending
                              select p;
             var topPerformers = playerList.Take(populationSize / 2).ToList();
+
+            var winners = from p in topPerformers
+                          where p.IsWinner
+                          select p;
+            if (winners.Count() > 0)
+            {
+                winnerBrain = winners.FirstOrDefault().Brain.Clone();
+                return;
+            }
 
 
             gc.ResetCurrentLevel();
